@@ -4,6 +4,7 @@ import { logger } from '../utils/logger';
 class Database {
   private static instance: Database;
   private prisma: PrismaClient;
+  private connected: boolean = false;
 
   private constructor() {
     this.prisma = new PrismaClient({
@@ -39,16 +40,22 @@ class Database {
     return this.prisma;
   }
 
+  public isConnected(): boolean {
+    return this.connected;
+  }
+
   public async connect(): Promise<void> {
     try {
       logger.info('Attempting to connect to database...');
       await this.prisma.$connect();
+      this.connected = true;
       logger.info('Database connected successfully');
       
       // Test the connection
       await this.prisma.$queryRaw`SELECT 1`;
       logger.info('Database connection test successful');
     } catch (error) {
+      this.connected = false;
       logger.error('Database connection failed:', error);
       throw error;
     }
@@ -57,6 +64,7 @@ class Database {
   public async disconnect(): Promise<void> {
     try {
       await this.prisma.$disconnect();
+      this.connected = false;
       logger.info('Database disconnected successfully');
     } catch (error) {
       logger.error('Database disconnection failed:', error);

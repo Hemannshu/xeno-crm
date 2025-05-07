@@ -1,6 +1,8 @@
 import { config } from 'dotenv';
 config();
-import express, { RequestHandler } from 'express';
+
+// Use direct imports from express and other packages
+import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -14,7 +16,6 @@ import { authRoutes } from './routes/auth.routes';
 import customerRoutes from './routes/customer.routes';
 import orderRoutes from './routes/order.routes';
 import campaignRoutes from './routes/campaign.routes';
-
 
 // Initialize Express app
 const app = express();
@@ -31,7 +32,11 @@ app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 24 * 60 * 60 * 1000 // 1 day
+  }
 }));
 
 // Passport middleware
@@ -42,28 +47,34 @@ app.use(passport.session());
 app.use(morgan('combined', { stream }));
 
 // Request logging
-const requestLogger: RequestHandler = (req, _, next) => {
+const requestLogger = (req: Request, _: Response, next: NextFunction) => {
   logger.info(`${req.method} ${req.url}`);
   next();
 };
 app.use(requestLogger);
 
 // Health check route
-const healthCheck: RequestHandler = (_, res) => {
+const healthCheck = (_: Request, res: Response) => {
   res.status(200).json({ 
     status: 'ok', 
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    database: db.isConnected() ? 'connected' : 'disconnected'
   });
 };
 app.get('/health', healthCheck);
 
-// Routes
+// API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/segments', segmentRoutes);
 app.use('/api/customers', customerRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/campaigns', campaignRoutes);
+
+// 404 handler
+app.use((_: Request, res: Response) => {
+  res.status(404).json({ message: 'Resource not found' });
+});
 
 // Error handling middleware
 app.use(errorHandler);
@@ -79,6 +90,7 @@ const startServer = async () => {
     // Start listening
     app.listen(PORT, () => {
       logger.info(`Server running on port ${PORT}`);
+      logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
     });
   } catch (error) {
     logger.error('Failed to start server:', error);
@@ -87,17 +99,14 @@ const startServer = async () => {
 };
 
 // Handle graceful shutdown
-process.on('SIGTERM', async () => {
-  logger.info('SIGTERM received. Shutting down gracefully...');
+const shutdown = async () => {
+  logger.info('Shutting down gracefully...');
   await db.disconnect();
   process.exit(0);
-});
+};
 
-process.on('SIGINT', async () => {
-  logger.info('SIGINT received. Shutting down gracefully...');
-  await db.disconnect();
-  process.exit(0);
-});
+process.on('SIGTERM', shutdown);
+process.on('SIGINT', shutdown);
 
 // Start the server
 startServer();
