@@ -1,0 +1,78 @@
+{"clientVersion":"6.7.0","errorCode":"P1012","level":"error","message":"Database connection failed: \u001b[1;91merror\u001b[0m: \u001b[1mEnvironment variable not found: DATABASE_URL.\u001b[0m\n  \u001b[1;94m-->\u001b[0m  \u001b[4mschema.prisma:10\u001b[0m\n\u001b[1;94m   | \u001b[0m\n\u001b[1;94m 9 | \u001b[0m  provider = \"postgresql\"\n\u001b[1;94m10 | \u001b[0m  url      = \u001b[1;91menv(\"DATABASE_URL\")\u001b[0m\n\u001b[1;94m   | \u001b[0m\n\nValidation Error Count: 1","name":"PrismaClientInitializationError","stack":"PrismaClientInitializationError: \u001b[1;91merror\u001b[0m: \u001b[1mEnvironment variable not found: DATABASE_URL.\u001b[0m\n  \u001b[1;94m-->\u001b[0m  \u001b[4mschema.prisma:10\u001b[0m\n\u001b[1;94m   | \u001b[0m\n\u001b[1;94m 9 | \u001b[0m  provider = \"postgresql\"\n\u001b[1;94m10 | \u001b[0m  url      = \u001b[1;91menv(\"DATABASE_URL\")\u001b[0m\n\u001b[1;94m   | \u001b[0m\n\nValidation Error Count: 1\n    at r (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:112:2565)","timestamp":"2025-05-06T21:50:04.776Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:20:04.348Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:20:04.354Z"}
+{"level":"info","message":"GET /health","timestamp":"2025-05-06T22:20:29.746Z"}
+{"level":"info","message":"::1 - - [06/May/2025:22:20:29 +0000] \"GET /health HTTP/1.1\" 200 74 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-06T22:20:29.758Z"}
+{"level":"info","message":"GET /favicon.ico","timestamp":"2025-05-06T22:20:30.621Z"}
+{"level":"info","message":"::1 - - [06/May/2025:22:20:30 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-06T22:20:30.627Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:34:07.707Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:34:07.715Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:34:08.153Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:34:08.159Z"}
+{"error":"Unexpected token & in JSON at position 85","level":"error","message":"Error:","method":"POST","path":"/api/auth/register","stack":"SyntaxError: Unexpected token & in JSON at position 85\n    at JSON.parse (<anonymous>)\n    at parse (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\body-parser\\lib\\types\\json.js:77:19)\n    at C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\body-parser\\lib\\read.js:123:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:203:9)\n    at invokeCallback (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\raw-body\\index.js:238:16)\n    at done (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\raw-body\\index.js:227:7)\n    at IncomingMessage.onEnd (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\raw-body\\index.js:287:7)\n    at IncomingMessage.emit (node:events:517:28)\n    at endReadableNT (node:internal/streams/readable:1368:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)","timestamp":"2025-05-06T22:34:18.653Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:34:50.231Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:34:50.234Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:34:50.238Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:34:50.239Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:34:59.155Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:34:59.193Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:34:59.203Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:34:59.208Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:34:59.207Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:34:59.247Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:34:59.253Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:34:59.258Z"}
+{"level":"error","message":"Error: Unexpected token & in JSON at position 85","method":"POST","path":"/api/auth/register","stack":"SyntaxError: Unexpected token & in JSON at position 85\n    at JSON.parse (<anonymous>)\n    at parse (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\body-parser\\lib\\types\\json.js:77:19)\n    at C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\body-parser\\lib\\read.js:123:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:203:9)\n    at invokeCallback (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\raw-body\\index.js:238:16)\n    at done (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\raw-body\\index.js:227:7)\n    at IncomingMessage.onEnd (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\raw-body\\index.js:287:7)\n    at IncomingMessage.emit (node:events:517:28)\n    at endReadableNT (node:internal/streams/readable:1368:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)","timestamp":"2025-05-06T22:35:38.345Z"}
+{"level":"info","message":"POST /api/auth/register","timestamp":"2025-05-06T22:36:33.078Z"}
+{"level":"error","message":"Error: Cannot read properties of undefined (reading 'generateToken')","method":"POST","path":"/api/auth/register","stack":"TypeError: Cannot read properties of undefined (reading 'generateToken')\n    at C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:62:26\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:5:58)","timestamp":"2025-05-06T22:36:33.206Z"}
+{"level":"info","message":"::1 - - [06/May/2025:22:36:33 +0000] \"POST /api/auth/register HTTP/1.1\" 500 475 \"-\" \"PostmanRuntime/7.43.4\"","timestamp":"2025-05-06T22:36:33.209Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:36:54.850Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:36:54.850Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:36:54.885Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:36:54.884Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:36:54.890Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:36:54.889Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:36:54.894Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:36:54.894Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:36:55.909Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:36:55.936Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:36:55.940Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:36:55.944Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:36:55.950Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:36:55.977Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:36:55.982Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:36:55.987Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:37:07.079Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:37:07.111Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:37:07.116Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:37:07.120Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:37:07.155Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:37:07.185Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:37:07.190Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:37:07.197Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:37:09.845Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:37:09.875Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:37:09.879Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:37:09.883Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:37:09.905Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:37:09.930Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:37:09.934Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:37:09.940Z"}
+{"level":"info","message":"POST /api/auth/register","timestamp":"2025-05-06T22:37:16.201Z"}
+{"level":"error","message":"Error: User with this email already exists","method":"POST","path":"/api/auth/register","stack":"Error: User with this email already exists\n    at AuthController.<anonymous> (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:46:15)\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:5:58)","timestamp":"2025-05-06T22:37:16.214Z"}
+{"level":"info","message":"::1 - - [06/May/2025:22:37:16 +0000] \"POST /api/auth/register HTTP/1.1\" 400 66 \"-\" \"PostmanRuntime/7.43.4\"","timestamp":"2025-05-06T22:37:16.221Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-06T22:39:17.380Z"}
+{"level":"info","message":"User logged in: cmad39vdx0000ru3cymadfxpa","timestamp":"2025-05-06T22:39:17.474Z"}
+{"level":"info","message":"::1 - - [06/May/2025:22:39:17 +0000] \"POST /api/auth/login HTTP/1.1\" 200 306 \"-\" \"PostmanRuntime/7.43.4\"","timestamp":"2025-05-06T22:39:17.478Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:40:24.602Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T22:40:24.603Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:40:24.646Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T22:40:24.654Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:40:24.660Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T22:40:24.663Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:40:24.668Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T22:40:24.670Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-06T23:18:55.891Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-06T23:18:55.995Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-06T23:18:56.002Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-06T23:18:56.007Z"}
