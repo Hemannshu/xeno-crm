@@ -1,13 +1,10 @@
 // src/types/express.d.ts
 import { IncomingMessage, ServerResponse } from 'http';
-import { JwtPayload } from 'jsonwebtoken';
+import { AuthUser } from './user';
 
 declare module 'express' {
   export interface Request extends IncomingMessage {
-    user?: {
-      id: string;
-      [key: string]: any;
-    };
+    user?: AuthUser;
     body: any;
     params: any;
     path: string;
@@ -26,6 +23,7 @@ declare module 'express' {
     statusCode: number;
     setHeader(key: string, value: string): Response;
     end(): Response;
+    redirect(url: string): void;
   }
 
   export interface NextFunction {
@@ -72,12 +70,4 @@ declare module 'express' {
 
   const express: Express;
   export default express;
-}
-
-declare global {
-  namespace Express {
-    interface Request {
-      user?: JwtPayload;
-    }
-  }
 }

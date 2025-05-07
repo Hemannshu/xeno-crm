@@ -2,21 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { ValidationError } from '../utils/errors';
 import { logger } from '../utils/logger';
-
-interface JwtPayload {
-  userId: string;
-}
-
-// Extend Express Request type to include user
-declare global {
-  namespace Express {
-    interface Request {
-      user?: {
-        id: string;
-      };
-    }
-  }
-}
+import { AuthUser } from '../types/user';
 
 export const authenticate = async (
   req: Request,
@@ -39,11 +25,9 @@ export const authenticate = async (
     const decoded = jwt.verify(
       token,
       process.env.JWT_SECRET || 'your-secret-key'
-    ) as JwtPayload;
+    ) as AuthUser;
 
-    req.user = {
-      id: decoded.userId,
-    };
+    req.user = decoded;
 
     next();
   } catch (error) {

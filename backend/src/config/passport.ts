@@ -3,7 +3,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
-
+console.log(process.env.GOOGLE_CLIENT_ID)
 passport.use(
   new GoogleStrategy(
     {

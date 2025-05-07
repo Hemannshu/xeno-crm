@@ -13,9 +13,10 @@ router.get('/google',
 router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   (req, res) => {
+    const user = req.user as import('../types/user').AuthUser;
     // Generate JWT token
     const token = jwt.sign(
-      { id: req.user!.id, email: req.user!.email },
+      { id: user.id, email: user.email },
       process.env.JWT_SECRET || 'your-secret-key',
       { expiresIn: '24h' }
     );

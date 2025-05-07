@@ -1,8 +1,9 @@
+import { config } from 'dotenv';
+config();
 import express, { RequestHandler } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import { config } from 'dotenv';
 import session from 'express-session';
 import passport from './config/passport';
 import { db } from './config/database';
@@ -14,8 +15,6 @@ import customerRoutes from './routes/customer.routes';
 import orderRoutes from './routes/order.routes';
 import campaignRoutes from './routes/campaign.routes';
 
-// Load environment variables
-config();
 
 // Initialize Express app
 const app = express();

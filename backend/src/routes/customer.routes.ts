@@ -14,9 +14,9 @@ router.get('/', authenticateToken, async (req, res) => {
         segments: true
       }
     });
-    res.json(customers);
+    return res.json(customers);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch customers' });
+    return res.status(500).json({ error: 'Failed to fetch customers' });
   }
 });
 
@@ -33,9 +33,9 @@ router.get('/:id', authenticateToken, async (req, res) => {
     if (!customer) {
       return res.status(404).json({ error: 'Customer not found' });
     }
-    res.json(customer);
+    return res.json(customer);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch customer' });
+    return res.status(500).json({ error: 'Failed to fetch customer' });
   }
 });
 
@@ -54,9 +54,9 @@ router.post('/', authenticateToken, async (req, res) => {
         postalCode: req.body.postalCode
       }
     });
-    res.status(201).json(customer);
+    return res.status(201).json(customer);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to create customer' });
+    return res.status(500).json({ error: 'Failed to create customer' });
   }
 });
 
@@ -76,9 +76,9 @@ router.put('/:id', authenticateToken, async (req, res) => {
         postalCode: req.body.postalCode
       }
     });
-    res.json(customer);
+    return res.json(customer);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to update customer' });
+    return res.status(500).json({ error: 'Failed to update customer' });
   }
 });
 
@@ -88,9 +88,9 @@ router.delete('/:id', authenticateToken, async (req, res) => {
     await prisma.customer.delete({
       where: { id: req.params.id }
     });
-    res.status(204).send();
+    return res.status(204).send();
   } catch (error) {
-    res.status(500).json({ error: 'Failed to delete customer' });
+    return res.status(500).json({ error: 'Failed to delete customer' });
   }
 });
 
