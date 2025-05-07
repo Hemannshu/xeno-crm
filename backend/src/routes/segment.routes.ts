@@ -1,8 +1,8 @@
-import { Router } from 'express';
+import * as express from 'express';
 import { segmentController } from '../controllers/segment.controller';
 import { authenticate } from '../middleware/auth.middleware';
 
-const router = Router();
+const router = express.Router();
 
 // Protected routes - require authentication
 router.use(authenticate);
@@ -14,4 +14,4 @@ router.get('/:id', segmentController.getSegment);
 router.put('/:id', segmentController.updateSegment);
 router.delete('/:id', segmentController.deleteSegment);
 
-export const segmentRoutes = router; 
+export const segmentRoutes = router;

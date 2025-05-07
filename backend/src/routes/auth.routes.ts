@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
 import { authController } from '../controllers/auth.controller';
@@ -12,7 +12,7 @@ router.get('/google',
 
 router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
-  (req, res) => {
+  (req: Request, res: Response) => {
     const user = req.user as import('../types/user').AuthUser;
     // Generate JWT token
     const token = jwt.sign(

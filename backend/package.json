@@ -32,7 +32,8 @@
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "prisma": "^5.10.2",
-    "winston": "^3.11.0"
+    "winston": "^3.11.0",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
