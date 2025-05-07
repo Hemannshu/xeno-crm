@@ -13,9 +13,9 @@ router.get('/', authenticateToken, async (req, res) => {
         customer: true
       }
     });
-    res.json(orders);
+    return res.json(orders);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch orders' });
+    return res.status(500).json({ error: 'Failed to fetch orders' });
   }
 });
 
@@ -31,9 +31,9 @@ router.get('/:id', authenticateToken, async (req, res) => {
     if (!order) {
       return res.status(404).json({ error: 'Order not found' });
     }
-    res.json(order);
+    return res.json(order);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch order' });
+    return res.status(500).json({ error: 'Failed to fetch order' });
   }
 });
 
@@ -52,9 +52,9 @@ router.post('/', authenticateToken, async (req, res) => {
         customer: true
       }
     });
-    res.status(201).json(order);
+    return res.status(201).json(order);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to create order' });
+    return res.status(500).json({ error: 'Failed to create order' });
   }
 });
 
@@ -74,9 +74,9 @@ router.put('/:id', authenticateToken, async (req, res) => {
         customer: true
       }
     });
-    res.json(order);
+    return res.json(order);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to update order' });
+    return res.status(500).json({ error: 'Failed to update order' });
   }
 });
 
@@ -86,9 +86,9 @@ router.delete('/:id', authenticateToken, async (req, res) => {
     await prisma.order.delete({
       where: { id: req.params.id }
     });
-    res.status(204).send();
+    return res.status(204).send();
   } catch (error) {
-    res.status(500).json({ error: 'Failed to delete order' });
+    return res.status(500).json({ error: 'Failed to delete order' });
   }
 });
 
@@ -101,9 +101,9 @@ router.get('/customer/:customerId', authenticateToken, async (req, res) => {
         customer: true
       }
     });
-    res.json(orders);
+    return res.json(orders);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch customer orders' });
+    return res.status(500).json({ error: 'Failed to fetch customer orders' });
   }
 });
 

@@ -15,9 +15,9 @@ router.get('/', authenticateToken, async (req, res) => {
         logs: true
       }
     });
-    res.json(campaigns);
+    return res.json(campaigns);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch campaigns' });
+    return res.status(500).json({ error: 'Failed to fetch campaigns' });
   }
 });
 
@@ -35,9 +35,9 @@ router.get('/:id', authenticateToken, async (req, res) => {
     if (!campaign) {
       return res.status(404).json({ error: 'Campaign not found' });
     }
-    res.json(campaign);
+    return res.json(campaign);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch campaign' });
+    return res.status(500).json({ error: 'Failed to fetch campaign' });
   }
 });
 
@@ -57,9 +57,9 @@ router.post('/', authenticateToken, async (req, res) => {
         segment: true
       }
     });
-    res.status(201).json(campaign);
+    return res.status(201).json(campaign);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to create campaign' });
+    return res.status(500).json({ error: 'Failed to create campaign' });
   }
 });
 
@@ -79,9 +79,9 @@ router.put('/:id', authenticateToken, async (req, res) => {
         segment: true
       }
     });
-    res.json(campaign);
+    return res.json(campaign);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to update campaign' });
+    return res.status(500).json({ error: 'Failed to update campaign' });
   }
 });
 
@@ -91,9 +91,9 @@ router.delete('/:id', authenticateToken, async (req, res) => {
     await prisma.campaign.delete({
       where: { id: req.params.id }
     });
-    res.status(204).send();
+    return res.status(204).send();
   } catch (error) {
-    res.status(500).json({ error: 'Failed to delete campaign' });
+    return res.status(500).json({ error: 'Failed to delete campaign' });
   }
 });
 
@@ -157,9 +157,9 @@ router.post('/:id/start', authenticateToken, async (req, res) => {
       }
     }
 
-    res.json({ message: 'Campaign delivery started', logs });
+    return res.json({ message: 'Campaign delivery started', logs });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to start campaign delivery' });
+    return res.status(500).json({ error: 'Failed to start campaign delivery' });
   }
 });
 

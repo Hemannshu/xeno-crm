@@ -1,13 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
 import { ValidationError } from '../utils/errors';
 import { segmentService } from '../services/segment.service';
+import { AuthUser } from '../types/user';
 
 export class SegmentController {
   private validateUser(req: Request): string {
-    if (!req.user?.id) {
+    const user = req.user as AuthUser;
+    if (!user?.id) {
       throw new ValidationError('User not authenticated');
     }
-    return req.user.id;
+    return user.id;
   }
 
   createSegment = async (req: Request, res: Response, next: NextFunction) => {
