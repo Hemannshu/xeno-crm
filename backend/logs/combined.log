@@ -513,3 +513,43 @@
 {"level":"info","message":"Server running on port 3001","timestamp":"2025-05-10T22:48:35.255Z"}
 {"level":"info","message":"Environment: development","timestamp":"2025-05-10T22:48:35.255Z"}
 {"level":"info","message":"Frontend URL: http://localhost:3000","timestamp":"2025-05-10T22:48:35.256Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-10T22:50:08.390Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-10T22:50:08.488Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-10T22:50:08.498Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-10T22:50:08.503Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-05-10T22:50:08.503Z"}
+{"level":"info","message":"Frontend URL: http://localhost:3000","timestamp":"2025-05-10T22:50:08.503Z"}
+{"level":"info","message":"POST /api/auth/google","timestamp":"2025-05-10T22:50:19.032Z"}
+{"level":"info","message":"::1 - - [10/May/2025:22:50:19 +0000] \"POST /api/auth/google HTTP/1.1\" 200 354 \"-\" \"undici\"","timestamp":"2025-05-10T22:50:19.093Z"}
+{"level":"info","message":"GET /api/auth/session","timestamp":"2025-05-10T22:50:20.663Z"}
+{"level":"info","message":"::1 - - [10/May/2025:22:50:20 +0000] \"GET /api/auth/session HTTP/1.1\" 200 95 \"-\" \"undici\"","timestamp":"2025-05-10T22:50:20.670Z"}
+{"level":"info","message":"GET /api/auth/session","timestamp":"2025-05-10T22:50:20.721Z"}
+{"level":"info","message":"::1 - - [10/May/2025:22:50:20 +0000] \"GET /api/auth/session HTTP/1.1\" 200 95 \"-\" \"undici\"","timestamp":"2025-05-10T22:50:20.726Z"}
+{"level":"info","message":"GET /api/auth/session","timestamp":"2025-05-10T22:50:20.796Z"}
+{"level":"info","message":"::1 - - [10/May/2025:22:50:20 +0000] \"GET /api/auth/session HTTP/1.1\" 200 95 \"-\" \"undici\"","timestamp":"2025-05-10T22:50:20.799Z"}
+{"level":"info","message":"GET /api/auth/session","timestamp":"2025-05-10T22:50:20.847Z"}
+{"level":"info","message":"::1 - - [10/May/2025:22:50:20 +0000] \"GET /api/auth/session HTTP/1.1\" 200 95 \"-\" \"undici\"","timestamp":"2025-05-10T22:50:20.852Z"}
+{"level":"info","message":"GET /api/auth/session","timestamp":"2025-05-10T22:50:20.910Z"}
+{"level":"info","message":"::1 - - [10/May/2025:22:50:20 +0000] \"GET /api/auth/session HTTP/1.1\" 200 95 \"-\" \"undici\"","timestamp":"2025-05-10T22:50:20.914Z"}
+{"level":"info","message":"GET /api/auth/session","timestamp":"2025-05-10T22:50:20.957Z"}
+{"level":"info","message":"::1 - - [10/May/2025:22:50:20 +0000] \"GET /api/auth/session HTTP/1.1\" 200 95 \"-\" \"undici\"","timestamp":"2025-05-10T22:50:20.960Z"}
+{"level":"info","message":"GET /api/auth/session","timestamp":"2025-05-10T22:50:20.991Z"}
+{"level":"info","message":"::1 - - [10/May/2025:22:50:20 +0000] \"GET /api/auth/session HTTP/1.1\" 200 95 \"-\" \"undici\"","timestamp":"2025-05-10T22:50:20.995Z"}
+{"level":"info","message":"GET /api/auth/session","timestamp":"2025-05-10T22:50:21.026Z"}
+{"level":"info","message":"::1 - - [10/May/2025:22:50:21 +0000] \"GET /api/auth/session HTTP/1.1\" 200 95 \"-\" \"undici\"","timestamp":"2025-05-10T22:50:21.032Z"}
+{"level":"info","message":"GET /api/auth/session","timestamp":"2025-05-10T22:50:21.080Z"}
+{"level":"info","message":"::1 - - [10/May/2025:22:50:21 +0000] \"GET /api/auth/session HTTP/1.1\" 200 95 \"-\" \"undici\"","timestamp":"2025-05-10T22:50:21.083Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-10T23:03:50.937Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-10T23:03:51.031Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-10T23:03:51.044Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-10T23:03:51.048Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-05-10T23:03:51.048Z"}
+{"level":"info","message":"Frontend URL: http://localhost:3000","timestamp":"2025-05-10T23:03:51.048Z"}
+{"level":"info","message":"GET /api/auth/session","timestamp":"2025-05-10T23:04:21.787Z"}
+{"level":"info","message":"::1 - - [10/May/2025:23:04:21 +0000] \"GET /api/auth/session HTTP/1.1\" 200 95 \"-\" \"undici\"","timestamp":"2025-05-10T23:04:21.796Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-10T23:05:02.557Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-10T23:05:02.658Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-10T23:05:02.667Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-10T23:05:02.671Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-05-10T23:05:02.672Z"}
+{"level":"info","message":"Frontend URL: http://localhost:3000","timestamp":"2025-05-10T23:05:02.672Z"}
