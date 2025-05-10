@@ -1,10 +1,18 @@
 // src/types/express.d.ts
 import { IncomingMessage, ServerResponse } from 'http';
 import { AuthUser } from './user';
+import { Session } from 'express-session';
 
 declare module 'express' {
   export interface Request extends IncomingMessage {
     user?: AuthUser;
+    session: Session & {
+      user?: {
+        id: string;
+        email: string;
+        name: string;
+      };
+    };
     body: any;
     params: any;
     path: string;
@@ -14,6 +22,7 @@ declare module 'express' {
       authorization?: string;
       [key: string]: string | undefined;
     };
+    isAuthenticated(): boolean;
   }
 
   export interface Response extends ServerResponse {
@@ -70,4 +79,20 @@ declare module 'express' {
 
   const express: Express;
   export default express;
+}
+
+declare global {
+  namespace Express {
+    interface Request {
+      user?: AuthUser;
+      session: Session & {
+        user?: {
+          id: string;
+          email: string;
+          name: string;
+        };
+      };
+      isAuthenticated(): boolean;
+    }
+  }
 }

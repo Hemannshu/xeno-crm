@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 export const settingsController = {
   async updateProfile(req: Request, res: Response) {
     try {
-      const { name, email, phone, currentPassword, newPassword } = req.body;
+      const { name, email,currentPassword, newPassword } = req.body;
       const userId = req.user?.id;
 
       if (!userId) {
@@ -38,7 +38,6 @@ export const settingsController = {
             password: hashedPassword,
             name,
             email,
-            phone,
           },
         });
       } else {
@@ -48,7 +47,6 @@ export const settingsController = {
           data: {
             name,
             email,
-            phone,
           },
         });
       }
@@ -60,73 +58,7 @@ export const settingsController = {
     }
   },
 
-  async updateCompany(req: Request, res: Response) {
-    try {
-      const { name, size, industry, address, website } = req.body;
-      const userId = req.user?.id;
+  
 
-      if (!userId) {
-        return res.status(401).json({ message: 'Unauthorized' });
-      }
-
-      // Update or create company information
-      await db.getPrisma().company.upsert({
-        where: { userId },
-        update: {
-          name,
-          size,
-          industry,
-          address,
-          website,
-        },
-        create: {
-          userId,
-          name,
-          size,
-          industry,
-          address,
-          website,
-        },
-      });
-
-      return res.json({ message: 'Company settings updated successfully' });
-    } catch (error) {
-      console.error('Error updating company settings:', error);
-      return res.status(500).json({ message: 'Failed to update company settings' });
-    }
-  },
-
-  async updateNotifications(req: Request, res: Response) {
-    try {
-      const { emailNotifications, orderUpdates, marketingEmails, securityAlerts } = req.body;
-      const userId = req.user?.id;
-
-      if (!userId) {
-        return res.status(401).json({ message: 'Unauthorized' });
-      }
-
-      // Update or create notification preferences
-      await db.getPrisma().notificationPreferences.upsert({
-        where: { userId },
-        update: {
-          emailNotifications,
-          orderUpdates,
-          marketingEmails,
-          securityAlerts,
-        },
-        create: {
-          userId,
-          emailNotifications,
-          orderUpdates,
-          marketingEmails,
-          securityAlerts,
-        },
-      });
-
-      return res.json({ message: 'Notification settings updated successfully' });
-    } catch (error) {
-      console.error('Error updating notification settings:', error);
-      return res.status(500).json({ message: 'Failed to update notification settings' });
-    }
-  },
+  
 }; 

@@ -11,10 +11,6 @@ router.use(authenticateToken);
 // Profile settings
 router.put('/profile', settingsController.updateProfile);
 
-// Company settings
-router.put('/company', settingsController.updateCompany);
 
-// Notification settings
-router.put('/notifications', settingsController.updateNotifications);
 
 export default router; 

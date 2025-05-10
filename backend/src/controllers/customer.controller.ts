@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client';
 import { z } from 'zod';
 
 const prisma = new PrismaClient();
@@ -14,52 +14,106 @@ const createCustomerSchema = z.object({
   state: z.string().optional(),
   country: z.string().optional(),
   postalCode: z.string().optional(),
+  segmentIds: z.array(z.string()).optional(),
 });
 
 const updateCustomerSchema = createCustomerSchema.partial();
 
-// Extend Express Request type to include query parameters
+// Extend Express Request type to include query parameters and user
 interface CustomerRequest extends Request {
   query: {
     page?: string;
     limit?: string;
-    query?: string;
+    search?: string;
+    sortBy?: string;
+    sortOrder?: 'asc' | 'desc';
+  };
+  user?: {
+    id: string;
   };
 }
 
 export const customerController = {
   // Create a new customer
-  async create(req: Request, res: Response) {
+  async create(req: CustomerRequest, res: Response) {
     try {
+      if (!req.user?.id) {
+        return res.status(401).json({ error: 'User not authenticated' });
+      }
+
       const data = createCustomerSchema.parse(req.body);
-      const customer = await prisma.customer.create({ data });
+      const { segmentIds, ...customerData } = data;
+
+      const customer = await prisma.customer.create({
+        data: {
+          ...customerData,
+          userId: req.user.id,
+          segments: segmentIds ? {
+            connect: segmentIds.map(id => ({ id }))
+          } : undefined
+        },
+        include: {
+          segments: true,
+          orders: true,
+          communicationLogs: true
+        }
+      });
+
       return res.status(201).json(customer);
     } catch (error) {
       if (error instanceof z.ZodError) {
         return res.status(400).json({ error: error.errors });
-      } else {
-        return res.status(500).json({ error: 'Failed to create customer' });
       }
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === 'P2002') {
+          return res.status(400).json({ error: 'Email already exists' });
+        }
+        if (error.code === 'P2025') {
+          return res.status(400).json({ error: 'One or more segments not found' });
+        }
+      }
+      return res.status(500).json({ error: 'Failed to create customer' });
     }
   },
 
-  // Get all customers with pagination
+  // Get all customers with pagination, sorting, and filtering
   async getAll(req: CustomerRequest, res: Response) {
     try {
+      if (!req.user?.id) {
+        return res.status(401).json({ error: 'User not authenticated' });
+      }
+
       const page = parseInt(req.query.page || '1');
       const limit = parseInt(req.query.limit || '10');
       const skip = (page - 1) * limit;
+      const search = req.query.search || '';
+      const sortBy = req.query.sortBy || 'createdAt';
+      const sortOrder = req.query.sortOrder || 'desc';
+
+      const where: Prisma.CustomerWhereInput = {
+        userId: req.user.id,
+        OR: search ? [
+          { name: { contains: search } },
+          { email: { contains: search } },
+          { phone: { contains: search } },
+        ] : undefined
+      };
 
       const [customers, total] = await Promise.all([
         prisma.customer.findMany({
+          where,
           skip,
           take: limit,
+          orderBy: {
+            [sortBy]: sortOrder
+          },
           include: {
             orders: true,
             segments: true,
+            communicationLogs: true
           },
         }),
-        prisma.customer.count(),
+        prisma.customer.count({ where })
       ]);
 
       return res.json({
@@ -77,14 +131,33 @@ export const customerController = {
   },
 
   // Get customer by ID
-  async getById(req: Request, res: Response) {
+  async getById(req: CustomerRequest, res: Response) {
     try {
+      if (!req.user?.id) {
+        return res.status(401).json({ error: 'User not authenticated' });
+      }
+
       const { id } = req.params;
-      const customer = await prisma.customer.findUnique({
-        where: { id },
+      const customer = await prisma.customer.findFirst({
+        where: { 
+          id,
+          userId: req.user.id
+        },
         include: {
-          orders: true,
+          orders: {
+            orderBy: {
+              createdAt: 'desc'
+            }
+          },
           segments: true,
+          communicationLogs: {
+            include: {
+              campaign: true
+            },
+            orderBy: {
+              createdAt: 'desc'
+            }
+          }
         },
       });
 
@@ -99,62 +172,138 @@ export const customerController = {
   },
 
   // Update customer
-  async update(req: Request, res: Response) {
+  async update(req: CustomerRequest, res: Response) {
     try {
+      if (!req.user?.id) {
+        return res.status(401).json({ error: 'User not authenticated' });
+      }
+
       const { id } = req.params;
       const data = updateCustomerSchema.parse(req.body);
+      const { segmentIds, ...customerData } = data;
 
       const customer = await prisma.customer.update({
-        where: { id },
-        data,
+        where: { 
+          id,
+          userId: req.user.id
+        },
+        data: {
+          ...customerData,
+          segments: segmentIds ? {
+            set: segmentIds.map(id => ({ id }))
+          } : undefined
+        },
+        include: {
+          segments: true,
+          orders: true,
+          communicationLogs: true
+        }
       });
 
       return res.json(customer);
     } catch (error) {
       if (error instanceof z.ZodError) {
         return res.status(400).json({ error: error.errors });
-      } else {
-        return res.status(500).json({ error: 'Failed to update customer' });
       }
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === 'P2025') {
+          return res.status(404).json({ error: 'Customer not found' });
+        }
+        if (error.code === 'P2002') {
+          return res.status(400).json({ error: 'Email already exists' });
+        }
+      }
+      return res.status(500).json({ error: 'Failed to update customer' });
     }
   },
 
   // Delete customer
-  async delete(req: Request, res: Response) {
+  async delete(req: CustomerRequest, res: Response) {
     try {
+      if (!req.user?.id) {
+        return res.status(401).json({ error: 'User not authenticated' });
+      }
+
       const { id } = req.params;
-      await prisma.customer.delete({ where: { id } });
+
+      // Check if customer has any orders
+      const customer = await prisma.customer.findFirst({
+        where: { 
+          id,
+          userId: req.user.id
+        },
+        include: {
+          orders: true
+        }
+      });
+
+      if (!customer) {
+        return res.status(404).json({ error: 'Customer not found' });
+      }
+
+      if (customer.orders.length > 0) {
+        return res.status(400).json({ 
+          error: 'Cannot delete customer with existing orders. Please archive instead.' 
+        });
+      }
+
+      await prisma.customer.delete({ 
+        where: { 
+          id,
+          userId: req.user.id
+        }
+      });
+
       return res.status(204).send();
     } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === 'P2025') {
+          return res.status(404).json({ error: 'Customer not found' });
+        }
+      }
       return res.status(500).json({ error: 'Failed to delete customer' });
     }
   },
 
-  // Search customers
-  async search(req: CustomerRequest, res: Response) {
+  // Get customer statistics
+  async getStats(req: CustomerRequest, res: Response) {
     try {
-      const { query } = req.query;
-      if (!query) {
-        return res.status(400).json({ error: 'Search query is required' });
+      if (!req.user?.id) {
+        return res.status(401).json({ error: 'User not authenticated' });
       }
 
-      const customers = await prisma.customer.findMany({
-        where: {
-          OR: [
-            { name: { contains: query } },
-            { email: { contains: query } },
-            { phone: { contains: query } },
-          ],
-        },
-        include: {
-          orders: true,
-          segments: true,
-        },
-      });
+      const [customerCount, orderCount, recentCustomers] = await Promise.all([
+        prisma.customer.count({
+          where: {
+            userId: req.user.id
+          }
+        }),
+        prisma.order.count({
+          where: {
+            userId: req.user.id
+          }
+        }),
+        prisma.customer.findMany({
+          where: {
+            userId: req.user.id
+          },
+          orderBy: {
+            createdAt: 'desc'
+          },
+          take: 5,
+          include: {
+            orders: true
+          }
+        })
+      ]);
 
-      return res.json(customers);
+      return res.json({
+        totalCustomers: customerCount,
+        totalOrders: orderCount,
+        recentCustomers
+      });
     } catch (error) {
-      return res.status(500).json({ error: 'Failed to search customers' });
+      return res.status(500).json({ error: 'Failed to fetch customer statistics' });
     }
-  },
-}; 
+  }
+};

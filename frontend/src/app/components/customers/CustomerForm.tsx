@@ -32,9 +32,10 @@ type CustomerFormData = z.infer<typeof customerSchema>;
 interface CustomerFormProps {
   initialData?: CustomerFormData;
   customerId?: string;
+  onSuccess?: () => void;
 }
 
-export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
+export function CustomerForm({ initialData, customerId, onSuccess }: CustomerFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -71,7 +72,11 @@ export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
       }
 
       toast.success(`Customer ${customerId ? 'updated' : 'created'} successfully`);
-      router.push('/dashboard/customers');
+      if (onSuccess) {
+        onSuccess();
+      } else {
+        router.push('/dashboard/customers');
+      }
     } catch (error) {
       toast.error('Failed to save customer');
     } finally {
