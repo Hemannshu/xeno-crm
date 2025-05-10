@@ -16,6 +16,7 @@ import { authRoutes } from './routes/auth.routes';
 import customerRoutes from './routes/customer.routes';
 import orderRoutes from './routes/order.routes';
 import campaignRoutes from './routes/campaign.routes';
+import settingsRoutes from './routes/settings.routes';
 
 // Initialize Express app
 const app = express();
@@ -70,6 +71,7 @@ app.use('/api/segments', segmentRoutes);
 app.use('/api/customers', customerRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/campaigns', campaignRoutes);
+app.use('/api/settings', settingsRoutes);
 
 // 404 handler
 app.use((_: Request, res: Response) => {

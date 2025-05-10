@@ -34,15 +34,6 @@ interface CustomerFormProps {
   customerId?: string;
 }
 
-type FormFieldProps = {
-  field: {
-    value: string;
-    onChange: (value: string) => void;
-    onBlur: () => void;
-    name: string;
-  };
-};
-
 export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -80,7 +71,7 @@ export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
       }
 
       toast.success(`Customer ${customerId ? 'updated' : 'created'} successfully`);
-      router.push('/customers');
+      router.push('/dashboard/customers');
     } catch (error) {
       toast.error('Failed to save customer');
     } finally {
@@ -99,7 +90,7 @@ export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
             <FormField
               control={form.control}
               name="name"
-              render={({ field }: FormFieldProps) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
@@ -113,7 +104,7 @@ export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
             <FormField
               control={form.control}
               name="email"
-              render={({ field }: FormFieldProps) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
@@ -127,7 +118,7 @@ export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
             <FormField
               control={form.control}
               name="phone"
-              render={({ field }: FormFieldProps) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Phone</FormLabel>
                   <FormControl>
@@ -141,7 +132,7 @@ export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
             <FormField
               control={form.control}
               name="address"
-              render={({ field }: FormFieldProps) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Address</FormLabel>
                   <FormControl>
@@ -156,7 +147,7 @@ export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
               <FormField
                 control={form.control}
                 name="city"
-                render={({ field }: FormFieldProps) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>City</FormLabel>
                     <FormControl>
@@ -170,7 +161,7 @@ export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
               <FormField
                 control={form.control}
                 name="state"
-                render={({ field }: FormFieldProps) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>State</FormLabel>
                     <FormControl>
@@ -186,7 +177,7 @@ export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
               <FormField
                 control={form.control}
                 name="country"
-                render={({ field }: FormFieldProps) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Country</FormLabel>
                     <FormControl>
@@ -200,7 +191,7 @@ export function CustomerForm({ initialData, customerId }: CustomerFormProps) {
               <FormField
                 control={form.control}
                 name="postalCode"
-                render={({ field }: FormFieldProps) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Postal Code</FormLabel>
                     <FormControl>

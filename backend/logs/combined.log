@@ -119,3 +119,256 @@
 {"level":"info","message":"Database connection test successful","timestamp":"2025-05-07T22:20:05.675Z"}
 {"level":"info","message":"Server running on port 3001","timestamp":"2025-05-07T22:20:05.682Z"}
 {"level":"info","message":"Environment: development","timestamp":"2025-05-07T22:20:05.682Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-07T22:20:49.630Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-07T22:20:49.663Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-07T22:20:49.667Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-07T22:20:49.671Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-05-07T22:20:49.671Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-10T14:45:20.624Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-10T14:45:20.616Z"}
+{"clientVersion":"5.22.0","errorCode":"P1001","level":"error","message":"Database connection failed: Can't reach database server at `localhost:3306`\n\nPlease make sure your database server is running at `localhost:3306`.","name":"PrismaClientInitializationError","stack":"PrismaClientInitializationError: Can't reach database server at `localhost:3306`\n\nPlease make sure your database server is running at `localhost:3306`.\n    at t (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:112:2488)\n    at Database.connect (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\config\\database.ts:50:7)\n    at startServer (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\index.ts:88:5)","timestamp":"2025-05-10T14:45:24.931Z"}
+{"clientVersion":"5.22.0","errorCode":"P1001","level":"error","message":"Database connection failed: Can't reach database server at `localhost:3306`\n\nPlease make sure your database server is running at `localhost:3306`.","name":"PrismaClientInitializationError","stack":"PrismaClientInitializationError: Can't reach database server at `localhost:3306`\n\nPlease make sure your database server is running at `localhost:3306`.\n    at t (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:112:2488)\n    at Database.connect (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\config\\database.ts:50:7)\n    at startServer (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\index.ts:88:5)","timestamp":"2025-05-10T14:45:24.938Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-10T14:46:11.386Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-10T14:46:11.589Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-10T14:46:11.614Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-10T14:46:11.622Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-05-10T14:46:11.623Z"}
+{"level":"info","message":"POST /api/auth/register","timestamp":"2025-05-10T14:51:49.163Z"}
+{"level":"info","message":"User registered: cmaicfmqt00009g24muwt4fjt","timestamp":"2025-05-10T14:51:49.367Z"}
+{"level":"info","message":"::1 - - [10/May/2025:14:51:49 +0000] \"POST /api/auth/register HTTP/1.1\" 201 320 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T14:51:49.370Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T14:52:04.611Z"}
+{"level":"info","message":"User logged in: cmaicfmqt00009g24muwt4fjt","timestamp":"2025-05-10T14:52:04.681Z"}
+{"level":"info","message":"::1 - - [10/May/2025:14:52:04 +0000] \"POST /api/auth/login HTTP/1.1\" 200 308 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T14:52:04.683Z"}
+{"level":"info","message":"GET /api/dashboard","timestamp":"2025-05-10T14:52:06.493Z"}
+{"level":"info","message":"::1 - - [10/May/2025:14:52:06 +0000] \"GET /api/dashboard HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T14:52:06.500Z"}
+{"level":"info","message":"GET /api/dashboard","timestamp":"2025-05-10T14:52:06.506Z"}
+{"level":"info","message":"::1 - - [10/May/2025:14:52:06 +0000] \"GET /api/dashboard HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T14:52:06.508Z"}
+{"level":"info","message":"GET /api/dashboard","timestamp":"2025-05-10T14:52:16.729Z"}
+{"level":"info","message":"::1 - - [10/May/2025:14:52:16 +0000] \"GET /api/dashboard HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T14:52:16.733Z"}
+{"level":"info","message":"GET /api/dashboard","timestamp":"2025-05-10T14:52:20.221Z"}
+{"level":"info","message":"::1 - - [10/May/2025:14:52:20 +0000] \"GET /api/dashboard HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T14:52:20.224Z"}
+{"level":"info","message":"GET /api/dashboard","timestamp":"2025-05-10T14:52:23.430Z"}
+{"level":"info","message":"::1 - - [10/May/2025:14:52:23 +0000] \"GET /api/dashboard HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T14:52:23.437Z"}
+{"level":"info","message":"POST /api/auth/logout","timestamp":"2025-05-10T14:52:42.667Z"}
+{"level":"info","message":"::1 - - [10/May/2025:14:52:42 +0000] \"POST /api/auth/logout HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T14:52:42.669Z"}
+{"level":"info","message":"POST /auth/login","timestamp":"2025-05-10T14:57:45.326Z"}
+{"level":"info","message":"::1 - - [10/May/2025:14:57:45 +0000] \"POST /auth/login HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T14:57:45.328Z"}
+{"level":"info","message":"POST /auth/register","timestamp":"2025-05-10T16:36:18.385Z"}
+{"level":"info","message":"::1 - - [10/May/2025:16:36:18 +0000] \"POST /auth/register HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T16:36:18.394Z"}
+{"level":"info","message":"POST /auth/login","timestamp":"2025-05-10T20:06:39.525Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:06:39 +0000] \"POST /auth/login HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:06:39.532Z"}
+{"level":"info","message":"POST /auth/register","timestamp":"2025-05-10T20:07:02.382Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:07:02 +0000] \"POST /auth/register HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:07:02.383Z"}
+{"level":"info","message":"POST /auth/register","timestamp":"2025-05-10T20:07:45.997Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:07:46 +0000] \"POST /auth/register HTTP/1.1\" 404 32 \"-\" \"PostmanRuntime/7.43.4\"","timestamp":"2025-05-10T20:07:46.001Z"}
+{"level":"info","message":"GET /health","timestamp":"2025-05-10T20:08:11.841Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:08:11 +0000] \"GET /health HTTP/1.1\" 200 100 \"-\" \"curl/8.11.1\"","timestamp":"2025-05-10T20:08:11.851Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-10T20:08:18.433Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-10T20:08:18.528Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-10T20:08:18.532Z"}
+{"level":"info","message":"POST /api/auth/register","timestamp":"2025-05-10T20:08:44.293Z"}
+{"level":"info","message":"User registered: cmainr6v200019g24cypveb16","timestamp":"2025-05-10T20:08:44.427Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:08:44 +0000] \"POST /api/auth/register HTTP/1.1\" 201 318 \"-\" \"curl/8.11.1\"","timestamp":"2025-05-10T20:08:44.428Z"}
+{"level":"info","message":"POST /api/auth/register","timestamp":"2025-05-10T20:08:53.371Z"}
+{"isOperational":true,"level":"error","message":"Error: User with this email already exists","stack":"Error: User with this email already exists\n    at AuthController.register (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:46:15)","statusCode":400,"timestamp":"2025-05-10T20:08:53.393Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:08:53 +0000] \"POST /api/auth/register HTTP/1.1\" 400 72 \"-\" \"curl/8.11.1\"","timestamp":"2025-05-10T20:08:53.395Z"}
+{"level":"info","message":"POST /api/auth/register","timestamp":"2025-05-10T20:09:46.000Z"}
+{"isOperational":true,"level":"error","message":"Error: User with this email already exists","stack":"Error: User with this email already exists\n    at AuthController.register (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:46:15)","statusCode":400,"timestamp":"2025-05-10T20:09:46.004Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:09:46 +0000] \"POST /api/auth/register HTTP/1.1\" 400 72 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:09:46.009Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:10:08.675Z"}
+{"level":"info","message":"User logged in: cmaicfmqt00009g24muwt4fjt","timestamp":"2025-05-10T20:10:08.745Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:10:08 +0000] \"POST /api/auth/login HTTP/1.1\" 200 308 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:10:08.746Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:10:08.751Z"}
+{"level":"info","message":"User logged in: cmaicfmqt00009g24muwt4fjt","timestamp":"2025-05-10T20:10:08.819Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:10:08 +0000] \"POST /api/auth/login HTTP/1.1\" 200 308 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:10:08.820Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:10:09.897Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:10:09 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:10:09.915Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:10:09.938Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:10:09 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:10:09.947Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T20:10:26.145Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:10:26 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:10:26.148Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:10:48.824Z"}
+{"level":"info","message":"User logged in: cmaicfmqt00009g24muwt4fjt","timestamp":"2025-05-10T20:10:48.893Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:10:48 +0000] \"POST /api/auth/login HTTP/1.1\" 200 308 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:10:48.896Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:10:48.899Z"}
+{"level":"info","message":"User logged in: cmaicfmqt00009g24muwt4fjt","timestamp":"2025-05-10T20:10:48.969Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:10:48 +0000] \"POST /api/auth/login HTTP/1.1\" 200 308 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:10:48.970Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:10:49.342Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:10:49 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:10:49.345Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:10:49.348Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:10:49 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:10:49.351Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T20:10:52.201Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:10:52 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:10:52.203Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:18:13.683Z"}
+{"level":"info","message":"User logged in: cmaicfmqt00009g24muwt4fjt","timestamp":"2025-05-10T20:18:13.878Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:18:13 +0000] \"POST /api/auth/login HTTP/1.1\" 200 308 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:18:13.880Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:18:13.887Z"}
+{"level":"info","message":"User logged in: cmaicfmqt00009g24muwt4fjt","timestamp":"2025-05-10T20:18:13.964Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:18:13 +0000] \"POST /api/auth/login HTTP/1.1\" 200 308 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:18:13.965Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:18:14.652Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:18:14 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:18:14.658Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:18:14.661Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:18:14 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:18:14.665Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T20:18:19.951Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:18:19 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:18:19.955Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-10T20:30:51.210Z"}
+{"level":"info","message":"Attempting to connect to database...","timestamp":"2025-05-10T20:30:51.197Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-10T20:30:51.349Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-05-10T20:30:51.349Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-10T20:30:51.360Z"}
+{"level":"info","message":"Database connection test successful","timestamp":"2025-05-10T20:30:51.360Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-05-10T20:30:51.365Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-05-10T20:30:51.365Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:31:01.627Z"}
+{"isOperational":true,"level":"error","message":"Error: Invalid email or password","stack":"Error: Invalid email or password\n    at AuthController.login (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:95:15)","statusCode":400,"timestamp":"2025-05-10T20:31:01.684Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:31:01 +0000] \"POST /api/auth/login HTTP/1.1\" 400 62 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:31:01.687Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:31:03.780Z"}
+{"isOperational":true,"level":"error","message":"Error: Invalid email or password","stack":"Error: Invalid email or password\n    at AuthController.login (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:95:15)","statusCode":400,"timestamp":"2025-05-10T20:31:03.784Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:31:03 +0000] \"POST /api/auth/login HTTP/1.1\" 400 62 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:31:03.786Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:31:04.345Z"}
+{"isOperational":true,"level":"error","message":"Error: Invalid email or password","stack":"Error: Invalid email or password\n    at AuthController.login (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:95:15)","statusCode":400,"timestamp":"2025-05-10T20:31:04.352Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:31:04 +0000] \"POST /api/auth/login HTTP/1.1\" 400 62 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:31:04.353Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:31:15.525Z"}
+{"isOperational":true,"level":"error","message":"Error: Invalid email or password","stack":"Error: Invalid email or password\n    at AuthController.login (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:95:15)","statusCode":400,"timestamp":"2025-05-10T20:31:15.530Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:31:15 +0000] \"POST /api/auth/login HTTP/1.1\" 400 62 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:31:15.532Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:31:17.186Z"}
+{"isOperational":true,"level":"error","message":"Error: Invalid email or password","stack":"Error: Invalid email or password\n    at AuthController.login (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:95:15)","statusCode":400,"timestamp":"2025-05-10T20:31:17.190Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:31:17 +0000] \"POST /api/auth/login HTTP/1.1\" 400 62 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:31:17.191Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:31:17.371Z"}
+{"isOperational":true,"level":"error","message":"Error: Invalid email or password","stack":"Error: Invalid email or password\n    at AuthController.login (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:95:15)","statusCode":400,"timestamp":"2025-05-10T20:31:17.378Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:31:17 +0000] \"POST /api/auth/login HTTP/1.1\" 400 62 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:31:17.381Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:32:36.881Z"}
+{"isOperational":true,"level":"error","message":"Error: Invalid email or password","stack":"Error: Invalid email or password\n    at AuthController.login (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:95:15)","statusCode":400,"timestamp":"2025-05-10T20:32:36.969Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:32:36 +0000] \"POST /api/auth/login HTTP/1.1\" 400 62 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:32:36.970Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:33:20.570Z"}
+{"isOperational":true,"level":"error","message":"Error: Invalid email or password","stack":"Error: Invalid email or password\n    at AuthController.login (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:95:15)","statusCode":400,"timestamp":"2025-05-10T20:33:20.577Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:33:20 +0000] \"POST /api/auth/login HTTP/1.1\" 400 62 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:33:20.580Z"}
+{"level":"info","message":"POST /api/auth/register","timestamp":"2025-05-10T20:33:40.604Z"}
+{"level":"info","message":"User registered: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T20:33:40.763Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:33:40 +0000] \"POST /api/auth/register HTTP/1.1\" 201 321 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:33:40.765Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:33:57.695Z"}
+{"level":"info","message":"User logged in: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T20:33:57.770Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:33:57 +0000] \"POST /api/auth/login HTTP/1.1\" 200 309 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:33:57.771Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:33:58.277Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:33:58 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:33:58.279Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:33:58.281Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:33:58 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:33:58.283Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T20:34:07.220Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:34:07 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:34:07.224Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:38:18.328Z"}
+{"isOperational":true,"level":"error","message":"Error: Invalid email or password","stack":"Error: Invalid email or password\n    at AuthController.login (C:\\Users\\HIMANSHU\\Desktop\\Himanshu\\projects\\xeno\\xeno-crm\\backend\\src\\controllers\\auth.controller.ts:95:15)","statusCode":400,"timestamp":"2025-05-10T20:38:18.381Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:38:18 +0000] \"POST /api/auth/login HTTP/1.1\" 400 62 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:38:18.382Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:38:34.471Z"}
+{"level":"info","message":"User logged in: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T20:38:34.552Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:38:34 +0000] \"POST /api/auth/login HTTP/1.1\" 200 309 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:38:34.553Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:38:35.109Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:38:35 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:38:35.115Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:38:35.118Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:38:35 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:38:35.123Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T20:38:47.275Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:38:47 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:38:47.280Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:38:59.920Z"}
+{"level":"info","message":"User logged in: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T20:38:59.999Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:39:00 +0000] \"POST /api/auth/login HTTP/1.1\" 200 309 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:39:00.000Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:39:00.512Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:39:00 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:39:00.514Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:39:00.518Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:39:00 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:39:00.526Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T20:39:09.816Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:39:09 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:39:09.820Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:40:18.502Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:40:18 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:40:18.503Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:40:55.199Z"}
+{"level":"info","message":"User logged in: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T20:40:55.293Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:40:55 +0000] \"POST /api/auth/login HTTP/1.1\" 200 309 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:40:55.294Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:40:56.974Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:40:56 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:40:56.992Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:40:57.009Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:40:57 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:40:57.020Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T20:41:00.382Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:41:00 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:41:00.384Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T20:54:14.752Z"}
+{"level":"info","message":"User logged in: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T20:54:14.925Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:54:14 +0000] \"POST /api/auth/login HTTP/1.1\" 200 309 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:54:14.928Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:54:16.563Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:54:16 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:54:16.569Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T20:54:16.582Z"}
+{"level":"info","message":"::1 - - [10/May/2025:20:54:16 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T20:54:16.603Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:08:46.513Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:08:46 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:08:46.522Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:08:46.527Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:08:46 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:08:46.529Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T21:09:21.950Z"}
+{"level":"info","message":"User logged in: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T21:09:22.164Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:09:22 +0000] \"POST /api/auth/login HTTP/1.1\" 200 309 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:09:22.165Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:09:25.039Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:09:25 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:09:25.041Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:09:25.042Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:09:25 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:09:25.043Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:11:06.463Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:11:06 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:11:06.464Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:11:06.466Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:11:06 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:11:06.469Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T21:11:23.962Z"}
+{"level":"info","message":"User logged in: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T21:11:24.038Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:11:24 +0000] \"POST /api/auth/login HTTP/1.1\" 200 309 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:11:24.039Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:11:24.798Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:11:24 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:11:24.801Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:11:24.802Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:11:24 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:11:24.804Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:11:28.909Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:11:28 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:11:28.911Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:11:28.915Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:11:28 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:11:28.918Z"}
+{"level":"info","message":"GET /api/customers","timestamp":"2025-05-10T21:11:31.002Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:11:31 +0000] \"GET /api/customers HTTP/1.1\" 200 76 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:11:31.081Z"}
+{"level":"info","message":"GET /api/customers","timestamp":"2025-05-10T21:11:31.087Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:11:31 +0000] \"GET /api/customers HTTP/1.1\" 304 - \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:11:31.093Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T21:12:27.293Z"}
+{"level":"info","message":"User logged in: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T21:12:27.432Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:12:27 +0000] \"POST /api/auth/login HTTP/1.1\" 200 309 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:12:27.433Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:12:27.516Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:12:27 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:12:27.517Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:12:27.519Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:12:27 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:12:27.521Z"}
+{"level":"info","message":"GET /api/orders","timestamp":"2025-05-10T21:12:35.356Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:12:35 +0000] \"GET /api/orders HTTP/1.1\" 200 73 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:12:35.435Z"}
+{"level":"info","message":"GET /api/orders","timestamp":"2025-05-10T21:12:35.441Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:12:35 +0000] \"GET /api/orders HTTP/1.1\" 304 - \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:12:35.449Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:13:14.380Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:13:14 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:13:14.382Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:13:14.383Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:13:14 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:13:14.385Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T21:14:02.234Z"}
+{"level":"info","message":"User logged in: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T21:14:02.320Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:14:02 +0000] \"POST /api/auth/login HTTP/1.1\" 200 309 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:14:02.322Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:14:02.467Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:14:02 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:14:02.470Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:14:02.475Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:14:02 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:14:02.477Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:14:06.796Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:14:06 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:14:06.802Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:14:06.806Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:14:06 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:14:06.809Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T21:15:44.035Z"}
+{"level":"info","message":"User logged in: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T21:15:44.139Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:15:44 +0000] \"POST /api/auth/login HTTP/1.1\" 200 309 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:15:44.140Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:15:44.276Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:15:44 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:15:44.277Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:15:44.279Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:15:44 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:15:44.281Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:15:55.420Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:15:55 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:15:55.424Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:15:55.428Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:15:55 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:15:55.434Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-05-10T21:20:31.201Z"}
+{"level":"info","message":"User logged in: cmaion9ek000014csln6wfj2s","timestamp":"2025-05-10T21:20:31.338Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:20:31 +0000] \"POST /api/auth/login HTTP/1.1\" 200 309 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:20:31.339Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:20:31.488Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:20:31 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:20:31.489Z"}
+{"level":"info","message":"GET /dashboard/stats","timestamp":"2025-05-10T21:20:31.491Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:20:31 +0000] \"GET /dashboard/stats HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:20:31.494Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:20:55.858Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:20:55 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:20:55.862Z"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-05-10T21:20:55.877Z"}
+{"level":"info","message":"::1 - - [10/May/2025:21:20:55 +0000] \"GET /api/auth/me HTTP/1.1\" 404 32 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\"","timestamp":"2025-05-10T21:20:55.884Z"}

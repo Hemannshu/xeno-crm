@@ -16,10 +16,12 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.10.2",
+    "@types/bcrypt": "^5.0.2",
     "@types/express-session": "^1.18.1",
     "@types/passport": "^1.0.17",
     "@types/passport-google-oauth20": "^2.0.16",
     "@types/winston": "^2.4.4",
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
