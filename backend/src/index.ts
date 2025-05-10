@@ -36,6 +36,8 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     secure: process.env.NODE_ENV === 'production',
+    httpOnly: true,
+    sameSite: 'lax',
     maxAge: 24 * 60 * 60 * 1000 // 1 day
   }
 }));
@@ -82,7 +84,7 @@ app.use((_: Request, res: Response) => {
 app.use(errorHandler);
 
 // Start server
-const PORT = parseInt(process.env.PORT || '3001', 10);
+const PORT = parseInt(process.env.PORT || '8000', 10);
 
 const startServer = async () => {
   try {
@@ -93,6 +95,7 @@ const startServer = async () => {
     app.listen(PORT, () => {
       logger.info(`Server running on port ${PORT}`);
       logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
+      logger.info(`Frontend URL: ${process.env.FRONTEND_URL}`);
     });
   } catch (error) {
     logger.error('Failed to start server:', error);

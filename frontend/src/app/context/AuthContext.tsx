@@ -1,137 +1,129 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { useRouter } from 'next/navigation';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 interface User {
   id: string;
   name: string;
   email: string;
-  company: {
-    name: string;
-    size: string;
-    industry: string;
-  };
 }
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  register: (userData: any) => Promise<void>;
-  logout: () => void;
-  isAuthenticated: boolean;
+  loginWithGoogle: () => Promise<void>;
+  logout: () => Promise<void>;
+  refreshSession: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export function AuthProvider({ children }: { children: ReactNode }) {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
+  const refreshSession = async () => {
     try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        setLoading(false);
-        return;
-      }
-
-      const response = await fetch('http://localhost:3001/api/auth/me', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
+      const response = await fetch('/api/auth/session', {
+        credentials: 'include',
       });
-
+      
       if (response.ok) {
-        const userData = await response.json();
-        setUser(userData);
+        const data = await response.json();
+        if (data.authenticated && data.user) {
+          setUser(data.user);
+        } else {
+          setUser(null);
+        }
       } else {
-        localStorage.removeItem('token');
+        setUser(null);
       }
     } catch (error) {
-      console.error('Auth check failed:', error);
-      localStorage.removeItem('token');
-    } finally {
-      setLoading(false);
+      console.error('Session refresh failed:', error);
+      setUser(null);
     }
   };
+
+  useEffect(() => {
+    const initializeAuth = async () => {
+      try {
+        const response = await fetch('/api/auth/session', {
+          credentials: 'include',
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          if (data.authenticated && data.user) {
+            setUser(data.user);
+          } else {
+            setUser(null);
+          }
+        } else {
+          setUser(null);
+        }
+      } catch (error) {
+        console.error('Auth initialization failed:', error);
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initializeAuth();
+
+    // Set up session refresh interval
+    const refreshInterval = setInterval(refreshSession, 14 * 60 * 1000); // Refresh every 14 minutes
+
+    return () => clearInterval(refreshInterval);
+  }, []);
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch('http://localhost:3001/api/auth/login', {
+      const response = await fetch('/api/auth/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
-        throw new Error(data.message || 'Invalid email or password');
+        const error = await response.json();
+        throw new Error(error.message || 'Login failed');
       }
 
-      if (!data.token) {
-        throw new Error('No authentication token received');
-      }
-
-      localStorage.setItem('token', data.token);
+      const data = await response.json();
       setUser(data.user);
-      router.push('/dashboard');
-    } catch (error: any) {
-      console.error('Login error:', error);
-      throw new Error(error.message || 'Login failed. Please try again.');
+    } catch (error) {
+      console.error('Login failed:', error);
+      throw error;
     }
   };
 
-  const register = async (userData: any) => {
+  const loginWithGoogle = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Registration failed');
-      }
-
-      localStorage.setItem('token', data.token);
-      setUser(data.user);
-      router.push('/dashboard');
-    } catch (error: any) {
-      throw new Error(error.message || 'Registration failed');
+      window.location.href = '/api/auth/google';
+    } catch (error) {
+      console.error('Google login failed:', error);
+      throw error;
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    setUser(null);
-    router.push('/auth/login');
+  const logout = async () => {
+    try {
+      await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+      setUser(null);
+    } catch (error) {
+      console.error('Logout failed:', error);
+      throw error;
+    }
   };
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        loading,
-        login,
-        register,
-        logout,
-        isAuthenticated: !!user,
-      }}
-    >
+    <AuthContext.Provider value={{ user, loading, login, loginWithGoogle, logout, refreshSession }}>
       {children}
     </AuthContext.Provider>
   );

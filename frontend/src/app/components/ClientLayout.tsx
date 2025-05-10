@@ -10,7 +10,7 @@ export default function ClientLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { user, loading, logout, isAuthenticated } = useAuth();
+  const { user, loading, logout } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -19,13 +19,13 @@ export default function ClientLayout({
 
   useEffect(() => {
     if (!loading) {
-      if (!isAuthenticated && !isAuthPage && !isPublicPage) {
+      if (!user && !isAuthPage && !isPublicPage) {
         router.push('/auth/login');
-      } else if (isAuthenticated && isAuthPage) {
+      } else if (user && isAuthPage) {
         router.push('/dashboard');
       }
     }
-  }, [loading, isAuthenticated, isAuthPage, isPublicPage, router]);
+  }, [loading, user, isAuthPage, isPublicPage, router]);
 
   if (loading) {
     return (
@@ -39,7 +39,7 @@ export default function ClientLayout({
     return <>{children}</>;
   }
 
-  if (!isAuthenticated) {
+  if (!user) {
     return null;
   }
 

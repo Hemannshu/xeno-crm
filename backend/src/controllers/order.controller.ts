@@ -7,10 +7,12 @@ const prisma = new PrismaClient();
 // Validation schemas
 const createOrderSchema = z.object({
   orderNumber: z.string(),
-  totalAmount: z.number().positive(),
+  total: z.number().positive(), // Changed from totalAmount to total
   status: z.enum(['PENDING', 'COMPLETED', 'CANCELLED', 'REFUNDED']),
   paymentMethod: z.string().optional(),
   customerId: z.string(),
+  userId: z.string(), // Added userId (required in schema)
+  items: z.record(z.any()).default({}), // Added items (required in schema)
 });
 
 const updateOrderSchema = createOrderSchema.partial();
@@ -159,7 +161,7 @@ export const orderController = {
         by: ['status'],
         _count: true,
         _sum: {
-          totalAmount: true,
+          total: true, // Changed from totalAmount to total
         },
       });
 
@@ -168,4 +170,4 @@ export const orderController = {
       return res.status(500).json({ error: 'Failed to fetch order statistics' });
     }
   },
-}; 
+};

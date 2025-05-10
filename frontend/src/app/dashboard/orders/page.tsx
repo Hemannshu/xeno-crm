@@ -14,21 +14,19 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
+import { useAuth } from '../../context/AuthContext';
 
 interface Order {
   id: string;
-  orderNumber: string;
-  customer: {
-    name: string;
-    email: string;
-  };
-  status: 'pending' | 'processing' | 'completed' | 'cancelled';
+  customerName: string;
+  date: string;
+  status: string;
   total: number;
-  createdAt: string;
 }
 
 export default function OrdersPage() {
   const router = useRouter();
+  const { user } = useAuth();
   const [orders, setOrders] = useState<Order[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
@@ -64,20 +62,9 @@ export default function OrdersPage() {
     setPage(newPage);
   };
 
-  const getStatusColor = (status: Order['status']) => {
-    switch (status) {
-      case 'pending':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'processing':
-        return 'bg-blue-100 text-blue-800';
-      case 'completed':
-        return 'bg-green-100 text-green-800';
-      case 'cancelled':
-        return 'bg-red-100 text-red-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
-  };
+  if (!user) {
+    return null;
+  }
 
   return (
     <Card>
@@ -99,26 +86,22 @@ export default function OrdersPage() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Order Number</TableHead>
+              <TableHead>Order ID</TableHead>
               <TableHead>Customer</TableHead>
+              <TableHead>Date</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Total</TableHead>
-              <TableHead>Date</TableHead>
               <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {orders.map((order) => (
               <TableRow key={order.id}>
-                <TableCell>{order.orderNumber}</TableCell>
-                <TableCell>{order.customer.name}</TableCell>
-                <TableCell>
-                  <span className={`px-2 py-1 rounded-full text-xs ${getStatusColor(order.status)}`}>
-                    {order.status}
-                  </span>
-                </TableCell>
+                <TableCell>{order.id}</TableCell>
+                <TableCell>{order.customerName}</TableCell>
+                <TableCell>{order.date}</TableCell>
+                <TableCell>{order.status}</TableCell>
                 <TableCell>${order.total.toFixed(2)}</TableCell>
-                <TableCell>{new Date(order.createdAt).toLocaleDateString()}</TableCell>
                 <TableCell>
                   <Button
                     variant="ghost"
