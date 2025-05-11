@@ -253,4 +253,51 @@ export class AIService {
       };
     }
   }
+
+  static async generateSegmentRule(prompt: string): Promise<any> {
+    try {
+      const fullPrompt = `Generate a SINGLE segment rule based on this description: "${prompt}". 
+      Return ONLY a valid JSON object with this exact structure:
+      {
+        "field": string,
+        "operator": string,
+        "value": string | number | boolean
+      }
+      
+      Valid operators are: equals, notEquals, contains, notContains, greaterThan, lessThan, between, in, notIn
+      For the given description, choose the most appropriate single rule.
+      Do not include any additional text or explanation, only the JSON object.`;
+
+      const generatedText = await this.generateWithOllama(fullPrompt);
+      
+      try {
+        // Clean the response to ensure it's valid JSON
+        const cleanedText = generatedText.trim()
+          .replace(/^[^{]*/, '')  // Remove anything before first {
+          .replace(/[^}]*$/, '')  // Remove anything after last }
+          .replace(/,\s*{/g, '{') // Remove any comma followed by another object
+          .replace(/}\s*,/g, '}'); // Remove any comma after an object
+        
+        const rule = JSON.parse(cleanedText);
+        
+        // Validate the rule structure
+        if (!rule.field || !rule.operator || rule.value === undefined) {
+          throw new Error('Invalid rule structure');
+        }
+        
+        return rule;
+      } catch (parseError) {
+        console.error('Error parsing generated rule:', parseError);
+        // Fallback to a default rule
+        return {
+          field: 'lastPurchaseDate',
+          operator: 'lessThan',
+          value: new Date().toISOString().split('T')[0]
+        };
+      }
+    } catch (error) {
+      console.error('Error generating segment rule:', error);
+      throw error;
+    }
+  }
 } 
