@@ -82,12 +82,20 @@ export async function GET(request: NextRequest) {
 
     if (!backendResponse.ok) {
       const errorData = await backendResponse.json();
-      console.error('Backend authentication failed:', errorData);
-      throw new Error(`Backend authentication failed: ${errorData.message || 'Unknown error'}`);
+      console.error('Backend authentication failed:', {
+        status: backendResponse.status,
+        statusText: backendResponse.statusText,
+        error: errorData
+      });
+      throw new Error(`Backend authentication failed: ${errorData.message || errorData.error || 'Unknown error'}`);
     }
 
-    const { token } = await backendResponse.json();
-    console.log('Successfully received token from backend');
+    const { token, user } = await backendResponse.json();
+    console.log('Successfully received token and user data from backend:', {
+      userId: user.id,
+      email: user.email,
+      name: user.name
+    });
 
     // Create response with cookie
     const response = NextResponse.redirect(new URL('/auth/callback', process.env.NEXT_PUBLIC_APP_URL));
@@ -102,9 +110,16 @@ export async function GET(request: NextRequest) {
     });
 
     return response;
-  } catch (error: any) {
-    console.error('Google OAuth callback error:', error);
-    const errorMessage = encodeURIComponent(error?.message || 'Authentication failed');
+  } catch (error) {
+    console.error('Google OAuth callback error:', {
+      error,
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined
+    });
+    
+    const errorMessage = encodeURIComponent(
+      error instanceof Error ? error.message : 'Authentication failed'
+    );
     return NextResponse.redirect(
       new URL(`/auth/login?error=auth_failed&message=${errorMessage}`, process.env.NEXT_PUBLIC_APP_URL)
     );

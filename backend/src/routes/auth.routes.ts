@@ -86,7 +86,7 @@ router.post('/login', authController.login);
 // Google OAuth POST endpoint
 router.post('/google', async (req: Request, res: Response) => {
   try {
-    const { googleId, email, name } = req.body;
+    const { googleId, email, name, picture } = req.body;
 
     if (!googleId || !email) {
       return res.status(400).json({ 
@@ -113,7 +113,10 @@ router.post('/google', async (req: Request, res: Response) => {
         // If user exists with email but no googleId, update with googleId
         user = await db.getPrisma().user.update({
           where: { email },
-          data: { googleId }
+          data: { 
+            googleId,
+            picture: picture || user.picture // Update picture if provided
+          }
         });
       } else {
         // Create new user if not found by either googleId or email
@@ -121,7 +124,8 @@ router.post('/google', async (req: Request, res: Response) => {
           data: {
             email,
             name,
-            googleId
+            googleId,
+            picture
           }
         });
       }
@@ -129,7 +133,12 @@ router.post('/google', async (req: Request, res: Response) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { id: user.id, email: user.email },
+      { 
+        id: user.id, 
+        email: user.email,
+        name: user.name,
+        role: user.role
+      },
       process.env.JWT_SECRET || 'your-secret-key',
       { expiresIn: '24h' }
     );
@@ -138,7 +147,8 @@ router.post('/google', async (req: Request, res: Response) => {
     req.session.user = {
       id: user.id,
       email: user.email,
-      name: user.name || ''
+      name: user.name || '',
+      role: user.role || 'user'
     };
 
     return res.json({
@@ -146,7 +156,9 @@ router.post('/google', async (req: Request, res: Response) => {
       user: {
         id: user.id,
         email: user.email,
-        name: user.name
+        name: user.name,
+        picture: user.picture,
+        role: user.role
       },
       token
     });
@@ -170,9 +182,17 @@ router.post('/google', async (req: Request, res: Response) => {
       }
     }
 
+    // Log the full error for debugging
+    console.error('Full error details:', {
+      error,
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined
+    });
+
     return res.status(500).json({ 
       error: 'Authentication failed',
-      message: 'An unexpected error occurred during authentication'
+      message: 'An unexpected error occurred during authentication',
+      details: error instanceof Error ? error.message : 'Unknown error'
     });
   }
 });
@@ -276,7 +296,8 @@ router.post('/login', async (req: Request, res: Response) => {
     req.session.user = {
       id: user.id,
       email: user.email,
-      name: user.name || ''
+      name: user.name || '',
+      role: user.role || 'user'
     };
 
     // Set session cookie options based on remember me
