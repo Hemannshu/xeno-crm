@@ -10,6 +10,7 @@ import {
   ShoppingCartIcon,
   ChartBarIcon,
   Cog6ToothIcon,
+  SparklesIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -21,6 +22,7 @@ const navigation = [
   { name: 'Customers', href: '/dashboard/customers', icon: UsersIcon },
   { name: 'Orders', href: '/dashboard/orders', icon: ShoppingCartIcon },
   { name: 'Analytics', href: '/dashboard/analytics', icon: ChartBarIcon },
+  { name: 'AI Features', href: '/dashboard/ai-features', icon: SparklesIcon },
   { name: 'Settings', href: '/dashboard/settings', icon: Cog6ToothIcon },
 ];
 
