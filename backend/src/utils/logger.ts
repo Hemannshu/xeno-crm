@@ -1,5 +1,5 @@
 import winston from 'winston';
-import 'winston-daily-rotate-file';
+import DailyRotateFile from 'winston-daily-rotate-file';
 import path from 'path';
 
 // Configure log rotation
@@ -20,14 +20,14 @@ const logger = winston.createLogger({
         winston.format.simple()
       ),
     }),
-    new winston.transports.DailyRotateFile({
+    new DailyRotateFile({
       filename: path.join(logDir, 'error-%DATE%.log'),
       datePattern: 'YYYY-MM-DD',
       maxSize,
       maxFiles,
       level: 'error',
     }),
-    new winston.transports.DailyRotateFile({
+    new DailyRotateFile({
       filename: path.join(logDir, 'combined-%DATE%.log'),
       datePattern: 'YYYY-MM-DD',
       maxSize,
