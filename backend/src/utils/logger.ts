@@ -1,4 +1,11 @@
 import winston from 'winston';
+import 'winston-daily-rotate-file';
+import path from 'path';
+
+// Configure log rotation
+const logDir = 'logs';
+const maxSize = '20m'; // Maximum size of each log file
+const maxFiles = '14d'; // Keep logs for 14 days
 
 const logger = winston.createLogger({
   level: process.env.LOG_LEVEL || 'info',
@@ -13,12 +20,18 @@ const logger = winston.createLogger({
         winston.format.simple()
       ),
     }),
-    new winston.transports.File({ 
-      filename: 'logs/error.log', 
-      level: 'error' 
+    new winston.transports.DailyRotateFile({
+      filename: path.join(logDir, 'error-%DATE%.log'),
+      datePattern: 'YYYY-MM-DD',
+      maxSize,
+      maxFiles,
+      level: 'error',
     }),
-    new winston.transports.File({ 
-      filename: 'logs/combined.log' 
+    new winston.transports.DailyRotateFile({
+      filename: path.join(logDir, 'combined-%DATE%.log'),
+      datePattern: 'YYYY-MM-DD',
+      maxSize,
+      maxFiles,
     }),
   ],
 });
