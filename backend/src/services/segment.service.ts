@@ -2,6 +2,7 @@ import { db } from '../config/database';
 import { NotFoundError } from '../utils/errors'; // Removed unused ValidationError
 import { logger } from '../utils/logger';
 import { Prisma } from '@prisma/client';
+import { campaignService } from './campaign.service';
 
 interface Rule {
   field: string;
@@ -29,7 +30,7 @@ class SegmentService {
     try {
       const audienceSize = await this.calculateAudienceSize(data.rules);
 
-      return await db.getPrisma().segment.create({
+      const segment = await db.getPrisma().segment.create({
         data: {
           name: data.name,
           rules: this.convertRulesToJson(data.rules),
@@ -37,6 +38,16 @@ class SegmentService {
           userId: data.userId,
         },
       });
+
+      // Create a default campaign for the segment
+      await campaignService.createCampaign({
+        name: `Welcome Campaign - ${segment.name}`,
+        message: "Hi {name}, here's 10% off on your next order!",
+        segmentId: segment.id,
+        userId: data.userId,
+      });
+
+      return segment;
     } catch (error) {
       logger.error('Error creating segment:', error);
       throw error;
