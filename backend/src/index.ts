@@ -17,6 +17,7 @@ import customerRoutes from './routes/customer.routes';
 import orderRoutes from './routes/order.routes';
 import campaignRoutes from './routes/campaign.routes';
 import settingsRoutes from './routes/settings.routes';
+import aiRoutes from './routes/aiRoutes';
 
 // Initialize Express app
 const app = express();
@@ -24,8 +25,10 @@ const app = express();
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
 }));
 app.use(express.json());
 
@@ -74,6 +77,7 @@ app.use('/api/customers', customerRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/campaigns', campaignRoutes);
 app.use('/api/settings', settingsRoutes);
+app.use('/api/ai', aiRoutes);
 
 // 404 handler
 app.use((_: Request, res: Response) => {
@@ -84,7 +88,7 @@ app.use((_: Request, res: Response) => {
 app.use(errorHandler);
 
 // Start server
-const PORT = parseInt(process.env.PORT || '8000', 10);
+const PORT = parseInt(process.env.PORT || '3001', 10);
 
 const startServer = async () => {
   try {
