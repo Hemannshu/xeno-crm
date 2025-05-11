@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { PrismaClient, Prisma } from '@prisma/client';
 import { z } from 'zod';
+import { AuthUser } from '../types/user';
 
 const prisma = new PrismaClient();
 
@@ -28,9 +29,7 @@ interface CustomerRequest extends Request {
     sortBy?: string;
     sortOrder?: 'asc' | 'desc';
   };
-  user?: {
-    id: string;
-  };
+  user?: AuthUser;
 }
 
 export const customerController = {

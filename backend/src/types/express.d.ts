@@ -11,6 +11,7 @@ declare module 'express' {
         id: string;
         email: string;
         name: string;
+        role?: string;
       };
     };
     body: any;
@@ -90,6 +91,7 @@ declare global {
           id: string;
           email: string;
           name: string;
+          role?: string;
         };
       };
       isAuthenticated(): boolean;

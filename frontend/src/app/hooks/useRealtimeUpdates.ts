@@ -14,21 +14,22 @@ export function useRealtimeUpdates() {
   useEffect(() => {
     const eventSource = new EventSource('/api/events');
 
-    eventSource.onopen = () => setConnected(true);
-    eventSource.onerror = () => {
-      setConnected(false);
-      setError(new Error('Connection lost'));
-    };
-
     eventSource.onmessage = (event) => {
       try {
         const parsed = JSON.parse(event.data);
-        if (parsed.type === 'update') {
+        if (parsed.type === 'connected') {
+          setConnected(true);
+        } else if (parsed.type === 'update') {
           setData(parsed.data);
         }
       } catch (err) {
         setError(err as Error);
       }
+    };
+
+    eventSource.onerror = () => {
+      setConnected(false);
+      setError(new Error('Connection lost'));
     };
 
     return () => {

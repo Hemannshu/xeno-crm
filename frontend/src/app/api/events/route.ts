@@ -7,7 +7,13 @@ export async function GET() {
   const stream = new ReadableStream({
     start(controller) {
       // Send initial connection message
-      controller.enqueue(encoder.encode('data: connected\n\n'));
+      const initialData = {
+        type: 'connected',
+        timestamp: new Date().toISOString()
+      };
+      controller.enqueue(
+        encoder.encode(`data: ${JSON.stringify(initialData)}\n\n`)
+      );
 
       // Set up interval for sending updates
       intervalId = setInterval(() => {
