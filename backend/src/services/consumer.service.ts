@@ -179,10 +179,10 @@ class ConsumerService {
   private async processDeliveryReceiptBatch() {
     if (this.deliveryReceiptBatch.length === 0) return;
 
-    try {
-      const batch = [...this.deliveryReceiptBatch];
-      this.deliveryReceiptBatch = [];
+    const batch = [...this.deliveryReceiptBatch];
+    this.deliveryReceiptBatch = [];
 
+    try {
       // Update communication logs in batch
       await db.getPrisma().$transaction(
         batch.map(receipt => 

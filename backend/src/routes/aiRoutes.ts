@@ -39,4 +39,18 @@ router.post('/campaign-summary', async (req, res) => {
   }
 });
 
+router.post('/segment-rule', async (req, res) => {
+  try {
+    const { prompt } = req.body;
+    if (!prompt) {
+      return res.status(400).json({ error: 'Missing prompt' });
+    }
+    const rules = await AIService.generateSegmentRule(prompt);
+    return res.json({ rules });
+  } catch (error) {
+    console.error('Error in segment rule endpoint:', error);
+    return res.status(500).json({ error: 'Failed to generate segment rule' });
+  }
+});
+
 export default router; 

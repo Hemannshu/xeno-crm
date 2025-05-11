@@ -1,5 +1,6 @@
 import { AIMessageSuggestions } from '@/components/AIMessageSuggestions';
 import { AICampaignSummary } from '@/components/AICampaignSummary';
+import { AISegmentRule } from '@/components/AISegmentRule';
 
 export default function AIFeaturesPage() {
   return (
@@ -14,6 +15,7 @@ export default function AIFeaturesPage() {
       <div className="grid gap-8">
         <AIMessageSuggestions />
         <AICampaignSummary />
+        <AISegmentRule />
       </div>
     </div>
   );
