@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
+import { useForm, ControllerRenderProps, UseFormStateReturn, ControllerFieldState } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { toast } from 'sonner';
@@ -45,12 +45,9 @@ interface OrderFormProps {
 }
 
 type FormFieldProps = {
-  field: {
-    value: string | number;
-    onChange: (value: string | number) => void;
-    onBlur: () => void;
-    name: string;
-  };
+  field: ControllerRenderProps<OrderFormData, keyof OrderFormData>;
+  fieldState: ControllerFieldState;
+  formState: UseFormStateReturn<OrderFormData>;
 };
 
 export function OrderForm({ initialData, orderId }: OrderFormProps) {
@@ -125,7 +122,10 @@ export function OrderForm({ initialData, orderId }: OrderFormProps) {
                 <FormItem>
                   <FormLabel>Order Number</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input 
+                      {...field} 
+                      onChange={(e) => field.onChange(e.target.value)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -139,10 +139,10 @@ export function OrderForm({ initialData, orderId }: OrderFormProps) {
                 <FormItem>
                   <FormLabel>Total Amount</FormLabel>
                   <FormControl>
-                    <Input
+                    <Input 
                       type="number"
                       step="0.01"
-                      {...field}
+                      {...field} 
                       onChange={(e) => field.onChange(parseFloat(e.target.value))}
                     />
                   </FormControl>
@@ -185,7 +185,10 @@ export function OrderForm({ initialData, orderId }: OrderFormProps) {
                 <FormItem>
                   <FormLabel>Payment Method</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input 
+                      {...field} 
+                      onChange={(e) => field.onChange(e.target.value)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
