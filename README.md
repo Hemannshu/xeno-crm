@@ -178,6 +178,68 @@ The application includes:
 
 Access monitoring dashboard at `http://localhost:3001/monitoring`
 
+## 🚀 Deployment
+
+### Backend Deployment (Vercel)
+
+1. Install Vercel CLI:
+```bash
+npm install -g vercel
+```
+
+2. Login to Vercel:
+```bash
+vercel login
+```
+
+3. Deploy the backend:
+```bash
+cd backend
+vercel
+```
+
+4. Set up environment variables in Vercel dashboard:
+- Go to your project settings
+- Add the following environment variables:
+  - `DATABASE_URL`
+  - `JWT_SECRET`
+  - `SESSION_SECRET`
+  - `FRONTEND_URL`
+  - `NODE_ENV=production`
+
+### Frontend Deployment (Vercel)
+
+1. Build the frontend:
+```bash
+cd frontend
+npm run build
+```
+
+2. Deploy to Vercel:
+```bash
+vercel
+```
+
+3. Set up environment variables in Vercel dashboard:
+- `REACT_APP_API_URL` (your backend URL)
+- `REACT_APP_ENV=production`
+
+### Database Setup
+
+For production, you'll need a hosted MySQL database. Options include:
+- PlanetScale
+- AWS RDS
+- DigitalOcean Managed Databases
+
+Update your `DATABASE_URL` in Vercel environment variables with your production database URL.
+
+### Important Notes
+
+1. Make sure your database allows connections from Vercel's IP ranges
+2. Update CORS settings in your backend to allow requests from your frontend domain
+3. Set up proper SSL certificates for secure connections
+4. Configure proper error logging and monitoring for production
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -191,4 +253,3 @@ Access monitoring dashboard at `http://localhost:3001/monitoring`
 
 -Himanshu Sharma - Initial work
 
- 
