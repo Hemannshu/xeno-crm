@@ -1,9 +1,12 @@
 import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { authenticateToken } from '../middleware/auth';
+import { validateCampaign } from '../middleware/validation';
+import { CampaignController } from '../controllers/campaign.controller';
 
 const router = Router();
 const prisma = new PrismaClient();
+const campaignController = new CampaignController();
 
 // Get all campaigns
 router.get('/', authenticateToken, async (req, res) => {
@@ -41,27 +44,40 @@ router.get('/:id', authenticateToken, async (req, res) => {
   }
 });
 
-// Create new campaign
-router.post('/', authenticateToken, async (req, res) => {
-  try {
-    const campaign = await prisma.campaign.create({
-      data: {
-        name: req.body.name,
-        message: req.body.message,
-        status: 'DRAFT',
-        userId: req.user!.id,
-        segmentId: req.body.segmentId
-      },
-      include: {
-        createdBy: true,
-        segment: true
-      }
-    });
-    return res.status(201).json(campaign);
-  } catch (error) {
-    return res.status(500).json({ error: 'Failed to create campaign' });
-  }
-});
+/**
+ * @swagger
+ * /api/campaigns:
+ *   post:
+ *     summary: Create a new campaign
+ *     tags: [Campaigns]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - message
+ *               - segmentId
+ *             properties:
+ *               name:
+ *                 type: string
+ *               message:
+ *                 type: string
+ *               segmentId:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Campaign created successfully
+ *       400:
+ *         description: Invalid input
+ *       401:
+ *         description: Unauthorized
+ */
+router.post('/', authenticateToken, validateCampaign, campaignController.createCampaign);
 
 // Update campaign
 router.put('/:id', authenticateToken, async (req, res) => {
@@ -162,5 +178,54 @@ router.post('/:id/start', authenticateToken, async (req, res) => {
     return res.status(500).json({ error: 'Failed to start campaign delivery' });
   }
 });
+
+// Get communication logs for a campaign
+router.get('/:id/logs', authenticateToken, async (req, res) => {
+  try {
+    const logs = await prisma.communicationLog.findMany({
+      where: { campaignId: req.params.id },
+      include: { customer: true },
+      orderBy: { sentAt: 'desc' },
+    });
+    return res.json({ logs });
+  } catch (error) {
+    return res.status(500).json({ error: 'Failed to fetch communication logs' });
+  }
+});
+
+/**
+ * @swagger
+ * /api/campaigns/{id}/stats:
+ *   get:
+ *     summary: Get campaign statistics
+ *     tags: [Campaigns]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Campaign statistics
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 totalSent:
+ *                   type: number
+ *                 totalFailed:
+ *                   type: number
+ *                 deliveryRate:
+ *                   type: number
+ *       404:
+ *         description: Campaign not found
+ *       401:
+ *         description: Unauthorized
+ */
+router.get('/:id/stats', authenticateToken, campaignController.getCampaignStats);
 
 export default router; 

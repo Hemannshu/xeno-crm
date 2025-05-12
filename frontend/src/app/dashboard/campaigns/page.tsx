@@ -37,25 +37,22 @@ export default function CampaignsPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  const fetchCampaigns = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(
-        `/api/campaigns?page=${page}&limit=10${searchQuery ? `&query=${searchQuery}` : ''}`
-      );
-      const data = await response.json();
-      setCampaigns(data.campaigns);
-      setTotalPages(data.pagination.totalPages);
-    } catch (error) {
-      console.error('Failed to fetch campaigns:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  // Use localStorage for mock campaigns
   useEffect(() => {
-    fetchCampaigns();
-  }, [page, searchQuery]);
+    setLoading(true);
+    const stored = localStorage.getItem('mockCampaigns');
+    let data: Campaign[] = [];
+    if (stored) {
+      data = JSON.parse(stored);
+    }
+    // Optionally filter by searchQuery
+    if (searchQuery) {
+      data = data.filter(c => c.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    }
+    setCampaigns(data);
+    setTotalPages(1); // No pagination for mock
+    setLoading(false);
+  }, [searchQuery]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -111,34 +108,42 @@ export default function CampaignsPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {campaigns.map((campaign) => (
-              <TableRow key={campaign.id}>
-                <TableCell>{campaign.name}</TableCell>
-                <TableCell>{campaign.type}</TableCell>
-                <TableCell>
-                  <span className={`px-2 py-1 rounded-full text-xs ${getStatusColor(campaign.status)}`}>
-                    {campaign.status}
-                  </span>
-                </TableCell>
-                <TableCell>${campaign.budget.toFixed(2)}</TableCell>
-                <TableCell>${campaign.spent.toFixed(2)}</TableCell>
-                <TableCell>
-                  <div className="text-sm">
-                    <div>Impressions: {campaign.impressions.toLocaleString()}</div>
-                    <div>Clicks: {campaign.clicks.toLocaleString()}</div>
-                    <div>Conversions: {campaign.conversions.toLocaleString()}</div>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <Button
-                    variant="ghost"
-                    onClick={() => router.push(`/dashboard/campaigns/${campaign.id}`)}
-                  >
-                    View
-                  </Button>
+            {Array.isArray(campaigns) && campaigns.length > 0 ? (
+              campaigns.map((campaign) => (
+                <TableRow key={campaign.id}>
+                  <TableCell>{campaign.name}</TableCell>
+                  <TableCell>{campaign.type}</TableCell>
+                  <TableCell>
+                    <span className={`px-2 py-1 rounded-full text-xs ${getStatusColor(campaign.status)}`}>
+                      {campaign.status}
+                    </span>
+                  </TableCell>
+                  <TableCell>${typeof campaign.budget === 'number' ? campaign.budget.toFixed(2) : '0.00'}</TableCell>
+                  <TableCell>${typeof campaign.spent === 'number' ? campaign.spent.toFixed(2) : '0.00'}</TableCell>
+                  <TableCell>
+                    <div className="text-sm">
+                      <div>Impressions: {(typeof campaign.impressions === 'number' ? campaign.impressions : 0).toLocaleString()}</div>
+                      <div>Clicks: {(typeof campaign.clicks === 'number' ? campaign.clicks : 0).toLocaleString()}</div>
+                      <div>Conversions: {(typeof campaign.conversions === 'number' ? campaign.conversions : 0).toLocaleString()}</div>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      variant="ghost"
+                      onClick={() => router.push(`/dashboard/campaigns/${campaign.id}`)}
+                    >
+                      View
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={7} className="text-center text-gray-500">
+                  {loading ? 'Loading campaigns...' : 'No campaigns found.'}
                 </TableCell>
               </TableRow>
-            ))}
+            )}
           </TableBody>
         </Table>
         <div className="mt-4 flex justify-center">
