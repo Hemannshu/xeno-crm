@@ -8,6 +8,142 @@ import bcrypt from 'bcrypt';
 
 const router = Router();
 
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Login to get JWT token
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                 type: string
+ *                 format: password
+ *     responses:
+ *       200:
+ *         description: Login successful
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                     email:
+ *                       type: string
+ *       401:
+ *         description: Invalid credentials
+ */
+router.post('/login', async (req: Request, res: Response) => {
+  try {
+    const { email, password, rememberMe } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({
+        error: 'Missing credentials',
+        message: 'Email and password are required'
+      });
+    }
+
+    // Find user by email
+    const user = await db.getPrisma().user.findUnique({
+      where: { email }
+    });
+
+    if (!user) {
+      return res.status(401).json({
+        error: 'Invalid credentials',
+        message: 'Invalid email or password'
+      });
+    }
+
+    // Verify password (assuming you have password hashing implemented)
+    if (!user.password) {
+      return res.status(401).json({
+        error: 'Invalid credentials',
+        message: 'Invalid email or password'
+      });
+    }
+
+    const isValidPassword = await bcrypt.compare(password, user.password);
+    if (!isValidPassword) {
+      return res.status(401).json({
+        error: 'Invalid credentials',
+        message: 'Invalid email or password'
+      });
+    }
+
+    // Generate tokens with different expiration based on remember me
+    const accessToken = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.JWT_SECRET || 'your-secret-key',
+      { expiresIn: rememberMe ? '7d' : '24h' }
+    );
+
+    const refreshToken = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.JWT_REFRESH_SECRET || 'your-refresh-secret-key',
+      { expiresIn: '30d' }
+    );
+
+    // Set up session
+    req.session.user = {
+      id: user.id,
+      email: user.email,
+      name: user.name || '',
+      role: user.role || 'user'
+    };
+
+    // Set session cookie options based on remember me
+    if (rememberMe) {
+      req.session.cookie.maxAge = 7 * 24 * 60 * 60 * 1000; // 7 days
+    }
+
+    return res.json({
+      message: 'Login successful',
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name
+      },
+      token: accessToken,
+      refreshToken
+    });
+  } catch (error) {
+    console.error('Login error:', error);
+    
+    if (error instanceof Error) {
+      if (error.message.includes('Invalid credentials')) {
+        return res.status(401).json({
+          error: 'Invalid credentials',
+          message: 'Invalid email or password'
+        });
+      }
+    }
+
+    return res.status(500).json({
+      error: 'Login failed',
+      message: 'An unexpected error occurred during login'
+    });
+  }
+});
+
 // Session check endpoint
 router.get('/session', (req: Request, res: Response) => {
   // Check for JWT token in Authorization header
@@ -81,7 +217,6 @@ router.get('/google/callback',
 
 // Auth routes
 router.post('/register', authController.register);
-router.post('/login', authController.login);
 
 // Google OAuth POST endpoint
 router.post('/google', async (req: Request, res: Response) => {
@@ -235,101 +370,6 @@ router.post('/refresh-token', async (req: Request, res: Response) => {
     return res.status(401).json({
       error: 'Invalid refresh token',
       message: 'The refresh token is invalid'
-    });
-  }
-});
-
-// Add remember me functionality
-router.post('/login', async (req: Request, res: Response) => {
-  try {
-    const { email, password, rememberMe } = req.body;
-
-    if (!email || !password) {
-      return res.status(400).json({
-        error: 'Missing credentials',
-        message: 'Email and password are required'
-      });
-    }
-
-    // Find user by email
-    const user = await db.getPrisma().user.findUnique({
-      where: { email }
-    });
-
-    if (!user) {
-      return res.status(401).json({
-        error: 'Invalid credentials',
-        message: 'Invalid email or password'
-      });
-    }
-
-    // Verify password (assuming you have password hashing implemented)
-    if (!user.password) {
-      return res.status(401).json({
-        error: 'Invalid credentials',
-        message: 'Invalid email or password'
-      });
-    }
-
-    const isValidPassword = await bcrypt.compare(password, user.password);
-    if (!isValidPassword) {
-      return res.status(401).json({
-        error: 'Invalid credentials',
-        message: 'Invalid email or password'
-      });
-    }
-
-    // Generate tokens with different expiration based on remember me
-    const accessToken = jwt.sign(
-      { id: user.id, email: user.email },
-      process.env.JWT_SECRET || 'your-secret-key',
-      { expiresIn: rememberMe ? '7d' : '24h' }
-    );
-
-    const refreshToken = jwt.sign(
-      { id: user.id, email: user.email },
-      process.env.JWT_REFRESH_SECRET || 'your-refresh-secret-key',
-      { expiresIn: '30d' }
-    );
-
-    // Set up session
-    req.session.user = {
-      id: user.id,
-      email: user.email,
-      name: user.name || '',
-      role: user.role || 'user'
-    };
-
-    // Set session cookie options based on remember me
-    if (rememberMe) {
-      req.session.cookie.maxAge = 7 * 24 * 60 * 60 * 1000; // 7 days
-    }
-
-    return res.json({
-      message: 'Login successful',
-      user: {
-        id: user.id,
-        email: user.email,
-        name: user.name
-      },
-      token: accessToken,
-      refreshToken
-    });
-  } catch (error) {
-    console.error('Login error:', error);
-    
-    if (error instanceof Error) {
-      if (error.message.includes('Invalid credentials')) {
-        return res.status(401).json({
-          error: 'Invalid credentials',
-          message: 'Invalid email or password'
-        });
-      }
-    }
-
-    return res.status(500).json({
-      error: 'Login failed',
-      message: 'An unexpected error occurred during login'
     });
   }
 });

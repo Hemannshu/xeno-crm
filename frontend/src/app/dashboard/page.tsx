@@ -3,10 +3,29 @@
 import { useRealtimeUpdates } from '../hooks/useRealtimeUpdates';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '../context/AuthContext';
+import { useEffect, useState } from "react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
 export default function DashboardPage() {
   const { user } = useAuth();
   const { data, error, connected } = useRealtimeUpdates();
+  const [campaignData, setCampaignData] = useState([]);
+
+  useEffect(() => {
+    // Aggregate SENT/FAILED from all campaigns in localStorage
+    const campaigns = JSON.parse(localStorage.getItem("mockCampaigns") || "[]");
+    let sent = 0, failed = 0;
+    campaigns.forEach(c => {
+      (c.logs || []).forEach(log => {
+        if (log.status === "SENT") sent++;
+        if (log.status === "FAILED") failed++;
+      });
+    });
+    setCampaignData([
+      { name: "Sent", value: sent },
+      { name: "Failed", value: failed }
+    ]);
+  }, []);
 
   if (!user) return null;
 
@@ -24,6 +43,23 @@ export default function DashboardPage() {
           {error.message}
         </div>
       )}
+
+      <Card className="max-w-xl mx-auto mt-8">
+        <CardHeader>
+          <CardTitle>Campaign Delivery Overview</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={campaignData}>
+              <XAxis dataKey="name" />
+              <YAxis allowDecimals={false} />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="value" fill="#6366f1" />
+            </BarChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
 
       <div className="grid gap-6 md:grid-cols-3">
         <Card>

@@ -2,11 +2,13 @@ import { config } from 'dotenv';
 config();
 
 // Use direct imports from express and other packages
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response, NextFunction, RequestHandler } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import session from 'express-session';
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsdoc from 'swagger-jsdoc';
 import passport from './config/passport';
 import { db } from './config/database';
 import { errorHandler } from './middleware/errorHandler';
@@ -21,6 +23,38 @@ import aiRoutes from './routes/aiRoutes';
 
 // Initialize Express app
 const app = express();
+
+// Swagger configuration
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Xeno CRM API',
+      version: '1.0.0',
+      description: 'API documentation for Xeno CRM',
+    },
+    servers: [
+      {
+        url: `http://localhost:${process.env.PORT || 3001}`,
+        description: 'Development server',
+      },
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+  },
+  apis: ['./src/routes/*.ts'], // Path to the API routes
+};
+
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve as unknown as RequestHandler);
+app.get('/api-docs', swaggerUi.setup(swaggerSpec) as unknown as RequestHandler);
 
 // Security middleware
 app.use(helmet());
@@ -119,3 +153,5 @@ process.on('SIGINT', shutdown);
 
 // Start the server
 startServer();
+
+export { app };
